@@ -2,6 +2,7 @@ import { v4 as uuidv4 } from "uuid";
 import { Button, HelperText } from "@windmill/react-ui";
 import API from "api/axios.config";
 import { useCart } from "context/CartContext";
+import toast from "react-hot-toast";
 import { formatCurrency } from "helpers/formatCurrency";
 import React, { useState } from "react";
 import { useHistory } from "react-router";
@@ -44,6 +45,7 @@ const PaymentForm = ({ previousStep, addressData, nextStep }) => {
 				() => {
 					setCartData({ ...cartData, items: [] });
 					setIsProcessing(false);
+					toast.success("Successfully paied");
 					history.push({
 						pathname: "/cart/success",
 						state: {

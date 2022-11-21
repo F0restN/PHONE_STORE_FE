@@ -1,7 +1,9 @@
 import Spinner from "components/Spinner";
 import history from "helpers/history";
 import Layout from "layout/Layout";
+import Admin from "pages/Admin";
 import Cart from "pages/Cart";
+import Dashboard from "pages/Dashboard";
 import Login from "pages/Login";
 import Register from "pages/Register";
 import { lazy, Suspense } from "react";
@@ -15,63 +17,69 @@ const Orders = lazy(() => import("pages/Orders"));
 const Product = lazy(() => import("pages/ProductList"));
 const Checkout = lazy(() => import("pages/Checkout"));
 const ResetPassword = lazy(() => import("pages/ResetPassword"));
-const Account = lazy(()=> import("pages/Account"))
-const Confirmation = lazy(()=> import("pages/Confirmation"));
+const Account = lazy(() => import("pages/Account"));
+const Confirmation = lazy(() => import("pages/Confirmation"));
 
 function App() {
-  return (
-    <Router history={history}>
-      <Suspense
-        fallback={
-          <Layout>
-            <Spinner size={100} />
-          </Layout>
-        }
-      >
-        <>
-          <Toaster position="top-right" />
-          <Switch>
-            <ProtectedRoute exact path="/profile">
-              <Account />
-            </ProtectedRoute>
-            <Route path="/signup">
-              <Register />
-            </Route>
-            <Route path="/login">
-              <Login />
-            </Route>
-            <Route exact path={["/", "/products"]}>
-              <Product />
-            </Route>
-            <Route exact path="/products/:id/">
-              <ProductDetails />
-            </Route>
-            <ProtectedRoute exact path="/cart/checkout">
-              <Checkout />
-            </ProtectedRoute>
-            <ProtectedRoute exact path="/cart/success">
-              <Confirmation />
-            </ProtectedRoute>
-            <ProtectedRoute exact path="/orders">
-              <Orders />
-            </ProtectedRoute>
-            <ProtectedRoute exact path="/orders/:id/">
-              <OrderDetails />
-            </ProtectedRoute>
-            <Route path="/cart">
-              <Cart />
-            </Route>
-            <Route path="/reset-password">
-              <ResetPassword />
-            </Route>
-            <Route path="*">
-              <h1>404 Error Found</h1>
-            </Route>
-          </Switch>
-        </>
-      </Suspense>
-    </Router>
-  );
+	return (
+		<Router history={history}>
+			<Suspense
+				fallback={
+					<Layout>
+						<Spinner size={100} />
+					</Layout>
+				}
+			>
+				<>
+					<Toaster position="top-right" />
+					<Switch>
+						<ProtectedRoute exact path="/profile">
+							<Account />
+						</ProtectedRoute>
+						<Route path="/signup">
+							<Register />
+						</Route>
+						<Route path="/login">
+							<Login />
+						</Route>
+						<Route path="/dashboard">
+							<Dashboard />
+						</Route>
+						<Route path="/admin">
+							<Admin />
+						</Route>
+						<Route exact path={["/", "/products"]}>
+							<Product />
+						</Route>
+						<Route exact path="/products/:id/">
+							<ProductDetails />
+						</Route>
+						<ProtectedRoute exact path="/cart/checkout">
+							<Checkout />
+						</ProtectedRoute>
+						<ProtectedRoute exact path="/cart/success">
+							<Confirmation />
+						</ProtectedRoute>
+						<ProtectedRoute exact path="/orders">
+							<Orders />
+						</ProtectedRoute>
+						<ProtectedRoute exact path="/orders/:id/">
+							<OrderDetails />
+						</ProtectedRoute>
+						<Route path="/cart">
+							<Cart />
+						</Route>
+						<Route path="/reset-password">
+							<ResetPassword />
+						</Route>
+						<Route path="*">
+							<h1>404 Error Found</h1>
+						</Route>
+					</Switch>
+				</>
+			</Suspense>
+		</Router>
+	);
 }
 
 export default App;
