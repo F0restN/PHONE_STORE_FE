@@ -66,37 +66,6 @@ const PaymentForm = ({ previousStep, addressData, nextStep }) => {
 			<Button disabled={isProcessing} onClick={handleSubmit} className="w-full">
 				Pay ${formatCurrency(cartSubtotal)}
 			</Button>
-			{/* <h1 className="font-medium text-2xl">Pay with Stripe</h1> */}
-			{/* <Elements stripe={stripePromise}>
-				<ElementsConsumer>
-					{({ stripe, elements }) => (
-						<form onSubmit={(e) => handleSubmit(e, elements, stripe)}>
-							<CardElement className="border py-2" />
-							{error && <HelperText valid={false}>{error.message}</HelperText>}
-							<div className="flex justify-between py-4">
-								<Button onClick={previousStep} layout="outline" size="small">
-									Back
-								</Button>
-								<Button
-									disabled={!stripe || isProcessing}
-									type="submit"
-									size="small"
-								>
-									{isProcessing || !stripe ? (
-										<PulseLoader size={10} color={"#0a138b"} />
-									) : (
-										`Pay ${formatCurrency(cartSubtotal)}`
-									)}
-								</Button>
-							</div>
-						</form>
-					)}
-				</ElementsConsumer>
-			</Elements> */}
-			{/* <PaystackBtn
-				isProcessing={isProcessing}
-				setIsProcessing={setIsProcessing}
-			/> */}
 		</div>
 	);
 };
