@@ -14,7 +14,7 @@ const Nav = () => {
   const [isAdmin, setIsAdmin] = useState(false);
 
   useEffect(() => {
-    if (userData && userData.rolse && userData.roles.includes("admin")) {
+    if (userData && userData.roles && userData.roles.includes("admin")) {
       setIsAdmin(true);
     }
   }, [userData]);
