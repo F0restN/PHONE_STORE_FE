@@ -33,6 +33,7 @@ const UserProvider = ({ children }) => {
     city,
     state,
     country,
+    business
   }) => {
     const res = await API.put(`/users/${userData.user_id}`, {
       fullname,
@@ -42,6 +43,7 @@ const UserProvider = ({ children }) => {
       city,
       state,
       country,
+      business
     });
     setUserData(res.data);
   };
