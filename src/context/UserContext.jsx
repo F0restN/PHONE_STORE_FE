@@ -24,7 +24,7 @@ const UserProvider = ({ children }) => {
       setAuthData(JSON.parse(localStorage.getItem("token")));
     }
   }, []);
-
+  // business: string
   const updateUserData = async ({
     fullname,
     email,
