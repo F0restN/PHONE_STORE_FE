@@ -9,7 +9,6 @@ const PaymentForm = ({ next }) => {
 	const { register, handleSubmit, errors, setValue } = useForm();
 
 	useEffect(() => {
-		debugger;
 		setValue("fullname", userData?.fullname);
 		setValue("email", userData?.email);
 		setValue("address", userData?.address);

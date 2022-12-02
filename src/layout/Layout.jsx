@@ -61,14 +61,14 @@ const Layout = ({ children, title, loading }) => {
 
 				<footer className="mt-auto flex justify-center py-2">
 					<p className="text-sm text-gray-600 sm:ml-4 sm:pl-4 sm:py-2 sm:mt-0 mt-4">
-						© 2021 PHONE STORE —
+						© 2022 PHONE STORE —
 						<a
 							href="https://github.com/dhatguy"
 							className="text-gray-500 ml-1"
 							target="_blank"
 							rel="noopener noreferrer"
 						>
-							@By Drake
+							@By ABXZ
 						</a>
 					</p>
 				</footer>
