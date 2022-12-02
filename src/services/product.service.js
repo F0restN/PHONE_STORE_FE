@@ -16,6 +16,9 @@ class ProductService {
 	async addProduct(prod) {
 		return await API.post(`/products`, prod);
 	}
+	async updateProduct(product) {
+		return await API.put(`/products/${product.product_id}`, product);
+	}
 }
 
 export default new ProductService();
