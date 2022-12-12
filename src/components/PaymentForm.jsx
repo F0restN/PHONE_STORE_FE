@@ -1,15 +1,12 @@
 import { v4 as uuidv4 } from "uuid";
-import { Button, HelperText } from "@windmill/react-ui";
-import API from "api/axios.config";
+import { Button, Card, HelperText } from "@windmill/react-ui";
 import { useCart } from "context/CartContext";
 import toast from "react-hot-toast";
 import { formatCurrency } from "helpers/formatCurrency";
 import React, { useState } from "react";
 import { useHistory } from "react-router";
-import PulseLoader from "react-spinners/PulseLoader";
 import OrderService from "services/order.service";
 import OrderSummary from "./OrderSummary";
-import PaystackBtn from "./PaystackBtn";
 
 const PaymentForm = ({ previousStep, addressData, nextStep }) => {
 	const { cartSubtotal, cartTotal, cartData, setCartData } = useCart();
@@ -41,20 +38,36 @@ const PaymentForm = ({ previousStep, addressData, nextStep }) => {
 				},
 			};
 
-			OrderService.createOrder(cartSubtotal, cartTotal, data.id, "STRIPE").then(
-				() => {
-					setCartData({ ...cartData, items: [] });
-					setIsProcessing(false);
-					toast.success("Successfully paied");
-					history.push({
-						pathname: "/cart/success",
-						state: {
-							fromPaymentPage: true,
-						},
-					});
-				}
-			);
+			let shoppingList = {};
+			if (cartData.items) {
+				cartData.items.forEach((item, index) => {
+					const id = item.product_id;
+					const inventory = item.quantity;
+					shoppingList[id] = inventory;
+				});
+			}
+
+			debugger;
+
+			OrderService.createOrder(
+				cartSubtotal,
+				cartTotal,
+				data.id,
+				"STRIPE",
+				shoppingList
+			).then(() => {
+				setCartData({ ...cartData, items: [] });
+				setIsProcessing(false);
+				toast.success("Successfully paied");
+				history.push({
+					pathname: "/cart/success",
+					state: {
+						fromPaymentPage: true,
+					},
+				});
+			});
 		} catch (error) {
+			debugger;
 			setIsProcessing(false);
 		}
 	};
