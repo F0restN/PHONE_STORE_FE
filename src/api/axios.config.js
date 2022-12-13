@@ -1,9 +1,10 @@
-import axios from "axios";
+import axios from 'axios';
 
+// const baseURL = 'https://sheltered-temple-93413.herokuapp.com/api';
 const baseURL =
-  process.env.NODE_ENV === "production"
+  process.env.NODE_ENV === 'production'
     ? process.env.REACT_APP_API_URL
-    : "/api";
+    : '/api';
 
 const API = axios.create({
   baseURL,
@@ -12,8 +13,8 @@ const API = axios.create({
 
 API.interceptors.request.use(
   function (req) {
-    const token = JSON.parse(localStorage.getItem("token"));
-    if (token) req.headers["auth-token"] = token;
+    const token = JSON.parse(localStorage.getItem('token'));
+    if (token) req.headers['auth-token'] = token;
     return req;
   },
   function (error) {
