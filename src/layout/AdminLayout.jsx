@@ -14,6 +14,7 @@ const navigation = [
 	{ name: "Dashboard", href: "/dashboard", current: false },
 	{ name: "Adjust Prod", href: "/adjust-product", current: false },
 	{ name: "Add Prod", href: "/add-product", current: true },
+	{ name: "Store", href: "/", current: false },
 ];
 const userNavigation = [{ name: "Sign out", href: "#" }];
 
