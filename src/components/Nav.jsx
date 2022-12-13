@@ -33,7 +33,7 @@ const Nav = () => {
 						<li>
 							<Link to="/login">
 								<Button layout="link">
-									<span>login</span>
+									<span>Login</span>
 								</Button>
 							</Link>
 						</li>
@@ -104,8 +104,17 @@ const Nav = () => {
 									</DropdownItem>
 									{isAdmin ? (
 										<DropdownItem tag="a">
-											<Link className="w-full" to="/admin">
-												Admin Management
+											<Link className="w-full" to="/adjust-product">
+												Adjust Product
+											</Link>
+										</DropdownItem>
+									) : (
+										<></>
+									)}
+									{isAdmin ? (
+										<DropdownItem tag="a">
+											<Link className="w-full" to="/add-product">
+												Add Product
 											</Link>
 										</DropdownItem>
 									) : (

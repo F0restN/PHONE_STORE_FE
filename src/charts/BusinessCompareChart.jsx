@@ -3,7 +3,6 @@ import propType from "prop-types";
 import { Pie } from "@ant-design/plots";
 
 const BusinessCompareChart = ({ data }) => {
-	debugger;
 	const config = {
 		appendPadding: 10,
 		data,

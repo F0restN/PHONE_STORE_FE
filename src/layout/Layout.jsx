@@ -26,7 +26,7 @@ const Layout = ({ children, title, loading }) => {
 					content="Ecommerce store built with React, Node, Express and Postgres"
 				/>
 				<meta property="og:url" content="https://pern-store.netlify.app/" />
-				<meta property="og:site_name" content="PERN Store" />
+				<meta property="og:site_name" content="PHONE Store" />
 				<meta property="og:image" content="android-chrome-512x512.png" />
 				<meta
 					property="og:image:secure_url"

@@ -1,7 +1,8 @@
 import Spinner from "components/Spinner";
 import history from "helpers/history";
 import Layout from "layout/Layout";
-import Admin from "pages/Admin";
+import Admin from "pages/AdjustProduct";
+import AdminManage from "layout/AdminLayout";
 import Cart from "pages/Cart";
 import Dashboard from "pages/Dashboard";
 import Login from "pages/Login";
@@ -10,6 +11,8 @@ import { lazy, Suspense } from "react";
 import { Toaster } from "react-hot-toast";
 import { Router, Switch, Route } from "react-router-dom";
 import { ProtectedRoute } from "routes/protected.route";
+import AdjustProduct from "pages/AdjustProduct";
+import AddProduct from "pages/AddProduct";
 
 const ProductDetails = lazy(() => import("pages/ProductDetails"));
 const OrderDetails = lazy(() => import("pages/OrderDetails"));
@@ -33,6 +36,17 @@ function App() {
 				<>
 					<Toaster position="top-right" />
 					<Switch>
+						{/* Admin */}
+						<ProtectedRoute path="/dashboard">
+							<Dashboard />
+						</ProtectedRoute>
+						<ProtectedRoute path="/adjust-product">
+							<AdjustProduct />
+						</ProtectedRoute>
+						<ProtectedRoute path="/add-product">
+							<AddProduct />
+						</ProtectedRoute>
+						{/* Customer */}
 						<ProtectedRoute exact path="/profile">
 							<Account />
 						</ProtectedRoute>
@@ -42,12 +56,6 @@ function App() {
 						<Route path="/login">
 							<Login />
 						</Route>
-						<Route path="/dashboard">
-							<Dashboard />
-						</Route>
-						<ProtectedRoute path="/admin">
-							<Admin />
-						</ProtectedRoute>
 						<Route exact path={["/", "/products"]}>
 							<Product />
 						</Route>

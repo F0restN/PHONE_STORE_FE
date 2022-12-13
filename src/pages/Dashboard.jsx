@@ -6,6 +6,7 @@ import RegionCompareChart from "charts/RegionCompareChart";
 import DashboardService from "services/dashboard.service";
 import TopCateChart from "charts/TopCateChart";
 import BusinessCompareChart from "charts/BusinessCompareChart";
+import AdminLayout from "../layout/AdminLayout";
 
 export default function Dashboard() {
 	const [productSumPrice, setProductSumPrice] = useState();
@@ -31,41 +32,42 @@ export default function Dashboard() {
 		DashboardService.getTopCate().then((res) => setTopCate(res.data));
 	}, []);
 
-	debugger;
 	return (
-		<div className="grid grid-cols-1 gap-4 bg-gray-100 p-4 max-length">
-			<div className="p-3 text-3xl">Dashboard</div>
-			<div className="grid grid-cols-4 gap-3">
-				<StatsCard title={"Transaction Amount"} number={orderSum} />
-				<StatsCard title={"Price"} number={2000} />
-				<StatsCard title={"Price"} number={2000} />
-				<StatsCard title={"Price"} number={2000} />
+		<AdminLayout currentPage="Dashboard">
+			<div className="grid grid-cols-1 gap-4 bg-gray-100 p-4 max-length">
+				<div className="p-3 text-3xl">Dashboard</div>
+				<div className="grid grid-cols-4 gap-3">
+					<StatsCard title={"Transaction Amount"} number={orderSum} />
+					<StatsCard title={"Price"} number={2000} />
+					<StatsCard title={"Price"} number={2000} />
+					<StatsCard title={"Price"} number={2000} />
+				</div>
+				{/* row1 */}
+				<div className="grid grid-cols-3 gap-4">
+					<div className="col-span-2">
+						<ChartCard title={"Products Sum price"}>
+							<RevenueOfProductsChart data={productSumPrice} />
+						</ChartCard>
+					</div>
+					<div className="col-span-1">
+						<ChartCard title={"Sales By Region"}>
+							<RegionCompareChart data={salesByRegion} />
+						</ChartCard>
+					</div>
+				</div>
+				<div className="grid grid-cols-2 gap-4">
+					<div className="col-span-1">
+						<ChartCard title={"Top Categories"}>
+							<TopCateChart data={topCate} />
+						</ChartCard>
+					</div>
+					<div className="col-span-1">
+						<ChartCard title={"Sales By Business"}>
+							<BusinessCompareChart data={salesByBusiness} />
+						</ChartCard>
+					</div>
+				</div>
 			</div>
-			{/* row1 */}
-			<div className="grid grid-cols-3 gap-4">
-				<div className="col-span-2">
-					<ChartCard title={"Products Sum price"}>
-						<RevenueOfProductsChart data={productSumPrice} />
-					</ChartCard>
-				</div>
-				<div className="col-span-1">
-					<ChartCard title={"Sales By Region"}>
-						<RegionCompareChart data={salesByRegion} />
-					</ChartCard>
-				</div>
-			</div>
-			<div className="grid grid-cols-2 gap-4">
-				<div className="col-span-1">
-					<ChartCard title={"Top Categories"}>
-						<TopCateChart data={topCate} />
-					</ChartCard>
-				</div>
-				<div className="col-span-1">
-					<ChartCard title={"Sales By Business"}>
-						<BusinessCompareChart data={salesByBusiness} />
-					</ChartCard>
-				</div>
-			</div>
-		</div>
+		</AdminLayout>
 	);
 }
