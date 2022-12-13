@@ -1,7 +1,7 @@
 {
   "name": "client",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "dependencies": {
     "@ant-design/charts": "^1.4.2",
     "@stripe/react-stripe-js": "^1.4.0",

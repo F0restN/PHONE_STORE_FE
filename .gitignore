@@ -4,3 +4,4 @@ build
 node_modules
 .eslintcache
 package-lock.json
+src/tailwind.output.css
