@@ -1,9 +1,10 @@
 import axios from 'axios';
 
-const baseURL = 'https://sheltered-temple-93413.herokuapp.com/api';
-// process.env.NODE_ENV === "production"
-//   ? process.env.REACT_APP_API_URL
-//   : "/api";
+// const baseURL = 'https://sheltered-temple-93413.herokuapp.com/api';
+const baseURL =
+  process.env.NODE_ENV === 'production'
+    ? process.env.REACT_APP_API_URL
+    : '/api';
 
 const API = axios.create({
   baseURL,
