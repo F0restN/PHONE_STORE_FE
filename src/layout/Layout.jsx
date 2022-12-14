@@ -17,7 +17,7 @@ const Layout = ({ children, title, loading }) => {
 					name="robots"
 					content="max-snippet:-1, max-image-preview:large, max-video-preview:-1"
 				/>
-				<link rel="canonical" href="https://pern-store.netlify.app/" />
+				<link rel="canonical" href="https://phone-store.netlify.app/" />
 				<meta property="og:locale" content="en_US" />
 				<meta property="og:type" content="website" />
 				<meta property="og:title" content="PHONE STORE" />
@@ -25,7 +25,7 @@ const Layout = ({ children, title, loading }) => {
 					property="og:description"
 					content="Ecommerce store built with React, Node, Express and Postgres"
 				/>
-				<meta property="og:url" content="https://pern-store.netlify.app/" />
+				<meta property="og:url" content="https://phone-store.netlify.app/" />
 				<meta property="og:site_name" content="PHONE Store" />
 				<meta property="og:image" content="android-chrome-512x512.png" />
 				<meta
